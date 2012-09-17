@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Cruzer's Demo</title>
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			function log( message ) {
+				$( "<div/>" ).text( message ).prependTo( "#log" );
+				$( "#log" ).scrollTop( 0 );
+			}
+
+			$(".songs").autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: '/public/index.php/suggest/' + encodeURI(request.term),
+						dataType: 'json',
+						success:function(data) {
+							response($.map(data, function(item){
+								return {
+									label: title,
+									value: title,
+									data: item
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				focus: function(event, ui) {
+					var title = ui.item.data.title;
+					if(ui.item.data.artist != ""){
+						title = title + " - " + ui.item.data.artist;
+					}
+					$("#songs").val(title);
+					return false;
+				},
+				select: function(event, ui) {
+					$("#code").text(ui.item.data.code);
+					$("#title").text(ui.item.data.title);
+					$("#artist").text(ui.item.data.artist);
+					return false;
+				},
+				open: function() {
+					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			})
+			.data("autocomplete")._renderItem = function(ul, item) {
+				return $( "<li></li>" )
+					.data("item.autocomplete", item)
+					.append('<a><div id="suggest-title">' + item.data.title + '</div><div id="suggest-artist">' + item.data.artist + "</div></a>" )
+					.appendTo(ul);
+			};
+		});
+		</script>
+		<style type="text/css">
+			#selected{
+				padding:10px;
+			}
+			
+			#suggest-title {
+				display: block;
+				font-weight: bold;
+				margin-bottom: 1em;
+			}
+			#suggest-artist {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+
+	</head>
+	<body>
+	<div class="demo">
+		<div class="ui-widget">
+			<input class="songs" id="songs" />
+		</div>
+
+	<div id="selected">
+		Result:
+		<div id="code"></div>
+		<div id="title"></div>
+		<div id="artist"></div>
+	</div>
+
+	</div>
+	</body>
+
+</html>
+
