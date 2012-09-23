@@ -1,11 +1,12 @@
 <?php
+set_include_path(get_include_path() . ":" . "/usr/share/php/ZendFramework-1.12.0/library");
+
 use CouchRepo\SongsRepo;
 use Data\Song;
 
 include_once 'Bootstrap.php';
 
-$dataDir = "../data/";
-$inputFile = $dataDir . "songlist/2.csv";
+$inputFile = "/home/kyle/songlist.csv";
 $handle = fopen($inputFile, "r");
 
 if ($handle) {
