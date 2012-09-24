@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Songbook</title>
+		<link rel="stylesheet" href="themes/cruz1.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+		<script type="text/javascript">
+			jQuery(document).bind('pageinit', function(){
+
+				$("#songsSearchBox").autocomplete({
+					source: function(request, response) {
+						$.ajax({
+							url: '/public/index.php/suggest/' + encodeURI(request.term),
+							dataType: 'json',
+							success:function(data) {
+								response($.map(data, function(item){
+									return {
+										label: item.title,
+										value: item.title,
+										data: item
+									}
+								}));
+							}
+						});
+					},
+					appendTo: "#suggestions",
+					minLength: 2,
+					open: function (event, ui) {
+						$("div#suggestions").show();
+						$("ul#suggestions-list").listview('refresh');
+	                },
+	                search: function (event, ui) {
+	                    $("ul#suggestions-list li.ac").remove();
+	                }
+
+				})
+				.data("autocomplete")._renderItem = function(ul, item) {
+					$('<li class="ac"><a href="#songPage" class="ui-link-inherit" data-transition="slide">' + 
+							'<h3 class="ui-li-heading">' + item.label + '</h3>' +
+							'<p class="ui-li-desc">' + item.data.artist + '</p>' +
+							'</a></li>').appendTo("ul#suggestions-list")
+							.bind("click", item, function (event){
+								$("#song-title").text(item.data.title);
+								$("#song-artist").text(item.data.artist);
+								$("#song-code").text(item.data.code);
+							});
+	                return null;
+				};
+			});
+		</script>
+
+	</head>
+	<body>
+			
+		<div data-role="page" id="mainPage" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<h1>Songbook</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<input type="search" id="songsSearchBox" class="ui-input-text" 
+					placeholder="Search by Song or Artist" />
+			</div>
+			<div data-role="content" data-theme="a" id="suggestions" class="height-full">
+				<ul data-role="listview" class="ui-listview" id="suggestions-list"></ul>
+			</div>
+		</div>
+		<div data-role="page" id="songPage" data-theme="a">
+			<div data-role="header" data-position="fixed">
+				<h1>Songbook</h1>
+			</div>
+			<div data-role="content" data-theme="a" class="height-full">
+				<h1 class="text-center space-none-bottom" id="song-title">Green Day</h1>
+				<h3 class="text-center space-none-top" id="song-artist">Basketcase</h3>
+				<p class="text-center font-xxlarge font-bold" id="song-code">3467</p>
+			</div>
+		</div>
+
+		
+</body>
+
+	
+</html>
