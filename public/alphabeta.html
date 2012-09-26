@@ -51,7 +51,7 @@
 
 				})
 				.data("autocomplete")._renderItem = function(ul, item) {
-					$('<li class="ac"><a href="#songPage" class="ui-link-inherit" data-transition="slide">' + 
+					$('<li class="ac"><a href="#song-info" class="ui-link-inherit" data-transition="slide">' + 
 							'<h3 class="ui-li-heading">' + item.label + '</h3>' +
 							'<p class="ui-li-desc">' + item.data.artist + '</p>' +
 							'</a></li>').appendTo("ul#suggestions-list")
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 		</div>
-		<div data-role="page" id="songPage" data-theme="a">
+		<div data-role="page" id="song-info" data-theme="a">
 			<div data-role="header" data-position="fixed" data-id="foo">
 				<h1>Songbook</h1>
 			</div>
