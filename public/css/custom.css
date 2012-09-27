@@ -3,11 +3,8 @@
     background: url(http://placekitten.com/200/300);
 }
 
-html.ui-mobile {
-	height: 100%;
-}
-#outer {
-    background: transparent ;
+div.ui-page{
+	height: auto !important;
 }
 
 .ui-body-a .ui-input-search {
