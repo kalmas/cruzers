@@ -28,7 +28,8 @@ input:-moz-placeholder {
 }
 
 div#suggestions{
-	background:url(http://placekitten.com/300/450) no-repeat center 15px;
+	background:url(http://placekitten.com/300/450) no-repeat fixed center 140px;
+	min-height:450px;
 }
 .text-center{
 	text-align:center;
