@@ -8,62 +8,6 @@
 *
 */
 
-html.ui-mobile {
-	height: 100%;
-}
-
-.ui-body-a .ui-input-search {
-	background:white;
-}
-
-::-webkit-input-placeholder  { 
-	color:#000;
-	text-shadow: 0.1em 0.1em 0.2em #333;
-	}
-input:-moz-placeholder { 
-	color:#000;
-	text-shadow: 0.1em 0.1em 0.2em #333; }
-	
-.ui-body-a input{
-	color:#000;
-	text-shadow: 0.1em 0.1em 0.2em #333;
-}
-
-div#suggestions{
-	display:none;
-}
-.text-center{
-	text-align:center;
-}
-.space-none-bottom{
-	padding-bottom: 0px;
-	border-bottom-width: 0px;
-	margin-bottom: 0px;
-}
-.space-none-top{
-	padding-top: 0px;
-	border-top-width: 0px;
-	margin-top: 0px;
-}
-.font-xxlarge{
-	font-size:xx-large;
-}
-.font-bold{
-	font-weight:bold;
-}
-
-.height-full{
-	height: 100%;
-}
-
-div.ui-page{
-	height: 100%;
-}
-
-
-
-
-
 
 /* Swatches */
 

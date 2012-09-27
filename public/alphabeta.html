@@ -4,14 +4,31 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Songbook</title>
-		<link rel="stylesheet" href="themes/cruz1.css" />
+		<title>Cruzers Songbook</title>
+		<link rel="stylesheet" href="css/cruz1.min.css" />
+		<link rel="stylesheet" href="css/custom.css" />
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
 		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		<script type="text/javascript">
+
 			jQuery(document).bind('pageinit', function(){
+				function clearSuggestions(){
+					$('#searchMessage').empty();
+					$('#suggestions-list').empty();
+				}
+				function hideFooter(){
+					$('#footer').hide();
+				}
+				function showFooter(){
+					$('#footer').show();
+				}
+				var $searchBox = $("#songsSearchBox")
+				$searchBox.focus(hideFooter);
+				$searchBox.blur(showFooter);
+				$searchBox.keydown(clearSuggestions);
+				$(".ui-input-clear").click(clearSuggestions);
 
 				$("#songsSearchBox").autocomplete({
 					source: function(request, response) {
@@ -19,7 +36,7 @@
 							url: '/public/index.php/suggest/' + encodeURI(request.term),
 							dataType: 'json',
 							beforeSend:function(){
-								$('#searchMessage').empty();
+								clearSuggestions();
 								$.mobile.showPageLoadingMsg();
 							},
 							complete:function(){
@@ -70,7 +87,7 @@
 			
 		<div data-role="page" id="mainPage" data-theme="a">
 			<div data-role="header" data-position="fixed" data-id="foo">
-				<h1>Songbook</h1>
+				<h1>Cruzers Songbook</h1>
 			</div>
 			<div data-role="content" data-theme="a">
 				<input type="search" id="songsSearchBox" class="ui-input-text" 
@@ -82,15 +99,46 @@
 					<h3 id="searchMessage"></h3>
 				</div>
 			</div>
+			<div data-role="footer" data-position="fixed" data-id="bar" id="footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#about">About</a></li>
+					</ul>
+				</div>
+			</div>		
 		</div>
 		<div data-role="page" id="song-info" data-theme="a">
 			<div data-role="header" data-position="fixed" data-id="foo">
-				<h1>Songbook</h1>
+				<a href="#mainPage" data-icon="arrow-l">Back</a>
+				<h1>Cruzers Songbook</h1>
 			</div>
 			<div data-role="content" data-theme="a" class="height-full">
 				<h1 class="text-center space-none-bottom" id="song-title"></h1>
 				<h3 class="text-center space-none-top" id="song-artist"></h3>
 				<p class="text-center font-xxlarge font-bold" id="song-code"></p>
+			</div>
+			<div data-role="footer" data-position="fixed" data-id="bar">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#about">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="about" data-theme="a">
+			<div data-role="header" data-position="fixed" data-id="foo">
+				<a href="#mainPage" data-icon="arrow-l">Back</a>
+				<h1>Cruzers Songbook</h1>
+			</div>
+			<div data-role="content" data-theme="a" class="height-full">
+				<p class="text-center font-bold">This site is presented as a love letter to the best bar 
+				in Norfolk (Karaoke or otherwise). Use it wisely and tip well.</p>
+				<p class="text-center">Site by Kyle (<a href="http://twitter.com/kylealmas">@kylealmas</a>)</p>
+				<p class="text-center">Artwork by Greg (<a href="http://thesebearsarehappy.com">thesebearsarehappy.com</a>)</p>
+				<p class="text-center">Improvements coming soon, including a 
+				Correct-A-Song feature, because I know the data is bad. 
+				You can <a href="github.com/kalmas/cruzers">fork the code
+				here</a>, if you're into that sorta thing.</p>
 			</div>
 		</div>
 
