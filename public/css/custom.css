@@ -1,7 +1,4 @@
 @CHARSET "UTF-8";
-#outer {
-    background: url(http://placekitten.com/200/300);
-}
 
 div.ui-page{
 	height: auto !important;
@@ -9,6 +6,10 @@ div.ui-page{
 
 .ui-body-a .ui-input-search {
 	background:white;
+}
+
+.height-full{
+	height:100%;
 }
 
 ::-webkit-input-placeholder  { 
@@ -25,7 +26,7 @@ input:-moz-placeholder {
 }
 
 div#suggestions{
-	background:url(http://placekitten.com/300/450) no-repeat fixed center 140px;
+	background:url(http://placekitten.com/300/450) no-repeat center 140px;
 	min-height:450px;
 }
 .text-center{
