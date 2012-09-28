@@ -32,7 +32,7 @@
 				$("#songsSearchBox").autocomplete({
 					source: function(request, response) {
 						$.ajax({
-							url: '/public/index.php/suggest/' + encodeURI(request.term),
+							url: '/cruzers/suggest/' + encodeURI(request.term),
 							dataType: 'json',
 							beforeSend:function(){
 								clearSuggestions();
@@ -111,11 +111,9 @@
 				<a href="#mainPage" data-icon="arrow-l">Back</a>
 				<h1>Cruzers Songbook</h1>
 			</div>
-			<div data-role="content" data-theme="a" class="height-full">
-				<h1 class="text-center space-none-bottom" id="song-title"></h1>
-				<h3 class="text-center space-none-top" id="song-artist"></h3>
-				<p class="text-center font-xxlarge font-bold" id="song-code"></p>
-			</div>
+			<h1 class="text-center space-none-bottom" id="song-title"></h1>
+			<h3 class="text-center space-none-top" id="song-artist"></h3>
+			<p class="text-center font-xxlarge font-bold" id="song-code"></p>
 			<div data-role="footer" data-position="fixed" data-id="bar">
 				<div data-role="navbar">
 					<ul>
@@ -129,16 +127,14 @@
 				<a href="#mainPage" data-icon="arrow-l">Back</a>
 				<h1>Cruzers Songbook</h1>
 			</div>
-			<div data-role="content" data-theme="a" class="height-full">
-				<p class="text-center font-bold">This site is presented as a love letter to the best bar 
-				in Norfolk (Karaoke or otherwise). Use it wisely and tip well.</p>
-				<p class="text-center">Site by Kyle (<a href="http://twitter.com/kylealmas">@kylealmas</a>)</p>
-				<p class="text-center">Artwork by Greg (<a href="http://thesebearsarehappy.com">thesebearsarehappy.com</a>)</p>
-				<p class="text-center">Improvements coming soon, including a 
-				Correct-A-Song feature, because I know the data is bad. 
-				You can <a href="github.com/kalmas/cruzers">fork the code
-				here</a>, if you're into that sorta thing.</p>
-			</div>
+			<p class="text-center font-bold">This site is presented as a love letter to the best bar 
+			in Norfolk (Karaoke or otherwise). <br />Use it wisely and tip well.</p>
+			<p class="text-center">Site by Kyle (<a href="http://twitter.com/kylealmas">@kylealmas</a>)</p>
+			<p class="text-center">Artwork by Greg (<a href="http://thesebearsarehappy.com">thesebearsarehappy.com</a>)</p>
+			<p class="text-center">Improvements coming soon, including a 
+			Correct-A-Song feature, because I know the data is bad. 
+			You can <a href="http://github.com/kalmas/cruzers">fork the code
+			here</a>, if you're into that sorta thing.</p>
 		</div>
 
 		
