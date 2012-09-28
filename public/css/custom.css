@@ -22,7 +22,8 @@ input:-moz-placeholder {
 	text-shadow: 0.1em 0.1em 0.2em #333;
 }
 div#suggestions{
-	background:url(http://placekitten.com/300/450) no-repeat center 10px;
+	background:url(../images/cruzers300.png) no-repeat center 10px;
+	background-size: 300px 386px;
 	min-height:450px;
 }
 .text-center{
