@@ -1,8 +1,8 @@
 <?php
-$dataDir = "../data/";
-$originalFile = $dataDir . "songlist/allpagesrawtouched.txt";
-$strippedFile = $dataDir . "songlist/1";
-$parsedFile = $dataDir . "songlist/2.csv";
+$dataDir = "data/";
+$originalFile = $dataDir . "cruzers_songlist/allpagesraw.txt";
+$strippedFile = $dataDir . "parsed/1";
+$parsedFile = $dataDir . "parsed/2.csv";
 
 $filestring = file_get_contents($originalFile);
 $filestring = preg_replace('/songlist.*\n/i', '', $filestring);
@@ -80,8 +80,8 @@ while (true) {
 					$col = $col + 1;
 					$in = getNextLine($inhandle, $outhandle, $row);
 					continue;
-				}				
-				
+				}
+
 				// see if the code was stuck on the front of the next field
 				$words = explode(" ", $str);
 				if(is_numeric($words[0])){
@@ -116,7 +116,7 @@ while (true) {
 			$col = 0;
 			break;
 	}
-	
+
 }
 
 
