@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVParser
 import static org.apache.commons.csv.CSVFormat.*
 
 import java.nio.file.Paths
+import groovy.json.*
 
 class Song {
     String code, title, artist
@@ -19,7 +20,7 @@ Paths.get('songbook/cleaned.csv').withReader { reader ->
         artist = null
         try {
             artist = record.artist.trim()
-            if(artist.empty()) {
+            if(artist.size() == 0) {
                 artist = null
             }
         }
@@ -29,7 +30,7 @@ Paths.get('songbook/cleaned.csv').withReader { reader ->
              title: title,
              artist: artist] as Song)
 
-        println song.dump()
+        println new JsonBuilder(song).toPrettyString()
     } 
 }
 
