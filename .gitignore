@@ -1,1 +1,6 @@
-tmp/
+/tmp/
+/bin/
+
+/.classpath
+/.project
+/.settings/
