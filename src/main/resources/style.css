@@ -1,0 +1,18 @@
+body, html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+@media (max-width: 500px) {
+  #main-image {
+    width: 100%;
+  }
+}
