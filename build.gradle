@@ -1,0 +1,121 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.2.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    endToEndTestCompile.extendsFrom testCompile
+    endToEndTestRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+
+    compile 'io.springfox:springfox-swagger2:2.4.0'
+    compile 'io.springfox:springfox-swagger-ui:2.4.0'
+    compile 'org.elasticsearch:elasticsearch:2.3.2'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.3.3.RELEASE'
+    compile 'org.springframework.data:spring-data-elasticsearch:2.0.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-devtools'
+
+    testCompile 'com.jayway.jsonpath:json-path'
+    testCompile 'com.jayway.jsonpath:json-path-assert'
+    testCompile 'junit:junit'
+    testCompile 'net.java.dev.jna:jna:4.2.2'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'org.springframework:spring-test'
+}
+
+// Settings for building jar file.
+jar {
+    baseName = 'cruzers-songbook'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Non-default java source sets.
+sourceSets {
+    endToEndTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir 'src/test/endToEnd/java'
+        }
+        resources {
+            srcDir 'src/test/endToEnd/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/unit/java'
+        }
+    }
+}
+
+// Run all End To End tests.
+task e2e(type: Test) {
+    testClassesDir = sourceSets.endToEndTest.output.classesDir
+    classpath = sourceSets.endToEndTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+// Generate a git.properties file.
+task generateGitProperties {
+    doLast {
+        try {
+            def branch = 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+            def revision = 'git rev-list --max-count 1 --timestamp HEAD'.execute().text.trim()
+            def commitHash = revision.split(' ').last()
+            def timestamp = revision ? new java.util.Date(java.util.concurrent.TimeUnit.SECONDS.toMillis(revision.split(' ').first() as long)).format("yyyy-MM-dd'T'HH:mm:ssZ") : null
+
+            File resourcesDir = new File(project.getBuildDir(), 'resources/main')
+            File propertiesFile = new File(resourcesDir, 'git.properties')
+
+            if(timestamp) {
+                // The project may not have any resources, so create the directories and file
+                if(!propertiesFile.exists()) {
+                    resourcesDir.mkdirs()
+                    propertiesFile.createNewFile()
+                }
+                propertiesFile.text = """git.branch=${branch}
+                git.commit.id=${commitHash}
+                git.commit.time=${timestamp}
+                """
+            } else {
+               project.logger.error('Unable to generate Git properties file:  revision could not be retrieved from Git.')
+            }
+        } catch (e) {
+            project.logger.error('Unable to generate Git properties file.', e)
+        }
+    }
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+// Generate the Git commit properties file prior to building the artifact.
+project.tasks.jar.dependsOn('generateGitProperties')
+
+// Run e2e tests.
+check.dependsOn e2e
+e2e.mustRunAfter test
+
+// used by dev tools to restart the app on changes in classpath
+bootRun {
+  addResources = true
+}
+

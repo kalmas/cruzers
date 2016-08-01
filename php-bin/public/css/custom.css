@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+div.ui-page{
+	height: auto !important;
+}
+.ui-body-a .ui-input-search {
+	background:white;
+}
+div.height-full{
+	height:100%;
+}
+::-webkit-input-placeholder  { 
+	color:#000;
+	text-shadow: 0.1em 0.1em 0.2em #333;
+}
+input:-moz-placeholder { 
+	color:#000;
+	text-shadow: 0.1em 0.1em 0.2em #333; 
+}
+.ui-body-a input{
+	color:#000;
+	text-shadow: 0.1em 0.1em 0.2em #333;
+}
+div#suggestions{
+	background:url(../images/cruzers300.png) no-repeat center 10px;
+	background-size: 300px 386px;
+	min-height:450px;
+}
+.text-center{
+	text-align:center;
+}
+.space-none-bottom{
+	padding-bottom: 0px;
+	border-bottom-width: 0px;
+	margin-bottom: 0px;
+}
+.space-none-top{
+	padding-top: 0px;
+	border-top-width: 0px;
+	margin-top: 0px;
+}
+.font-xxlarge{
+	font-size:xx-large;
+}
+.font-bold{
+	font-weight:bold;
+}
+
+div.ui-page{
+	height: 100%;
+}
+
+.ui-header h1.ui-title{
+	margin:	0.6em 25% 0.8em;
+}
