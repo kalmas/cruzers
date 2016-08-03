@@ -1,10 +1,11 @@
 body, html {
     overflow-x: hidden;
     overflow-y: auto;
+    color: #212121;
 }
 
 .icon-block {
-  padding: 0 15px;
+    padding: 0 15px;
 }
 
 .icon-block .material-icons {
@@ -12,7 +13,26 @@ body, html {
 }
 
 @media (max-width: 500px) {
-  #main-image {
-    width: 100%;
-  }
+    #main-image {
+        width: 100%;
+    }
+}
+
+.suggest-content {
+    margin-top: -20px;
+    display: block;
+    opacity: 1;
+    position: static;
+}
+
+.suggestion > .title {
+    font-size: x-large;
+    color: #757575;
+    padding-bottom: 0px;
+}
+
+.suggestion > p {
+    color: #757575;
+    margin: 0px;
+    padding: 0px 16px;
 }
