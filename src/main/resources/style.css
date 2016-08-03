@@ -18,7 +18,7 @@ body, html {
     }
 }
 
-.suggest-content {
+#suggestions {
     margin-top: -20px;
     display: block;
     opacity: 1;
