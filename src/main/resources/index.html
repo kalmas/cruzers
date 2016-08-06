@@ -13,9 +13,9 @@
 <body>
   <nav>
     <div class="nav-wrapper purple darken-2">
-      <form>
+      <form id="search-form">
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input id="search" type="search" autocomplete="off">
           <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
           <ul id="suggestions" class="collection dropdown-content">
@@ -26,16 +26,15 @@
   </nav>
   <div class="section no-pad-bot purple">
     <div class="container center-align">
-        <img src="http://placehold.it/500x643" id="main-image">
-
-      <!-- <img src="cruzers500.png" id="main-image"> -->
+        <!-- <img src="http://placehold.it/500x643" id="main-image"> -->
+      <img src="cruzers500.png" id="main-image">
     </div>
   </div>
 
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script>
   <script src="app.js"></script>
 
   </body>

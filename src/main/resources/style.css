@@ -1,7 +1,7 @@
 body, html {
     overflow-x: hidden;
     overflow-y: auto;
-    color: #212121;
+    background-color: #9C27B0;
 }
 
 .icon-block {
@@ -23,6 +23,10 @@ body, html {
     display: block;
     opacity: 1;
     position: static;
+}
+
+#suggestions li {
+    cursor: default;
 }
 
 .suggestion > .title {

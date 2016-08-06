@@ -12,10 +12,10 @@
 
   	$(function(){
 
-        $('#search').keyup(function(event) {
+        $('#search').bind('keyup', function(event) {
             var query = this.value;
 
-            var xhr = $.get('http://localhost:8080/songs/suggest', {'query': query});
+            var xhr = $.get('http://192.168.2.9:8080/songs/suggest', {'query': query});
             xhr.done(function(data) {
                 var sug = $('#suggestions');
                 sug.empty();
@@ -25,6 +25,12 @@
                 });
             });
 
+        });
+
+        $('#search-form').bind('submit', function(event) {
+            event.preventDefault();
+            $(event.target).find('input').blur();
+            $(event.target).find('label').removeClass('active');
         });
 
   	});
