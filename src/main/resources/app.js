@@ -1,5 +1,6 @@
 (function($) {
-    function buildSuggestion(title, artist, code) {
+    function buildSuggestion(title, artist, code)
+    {
         title = title || '';
         artist = artist || '';
         code = code || '';
@@ -10,28 +11,37 @@
             + '</li>';
     }
 
+    function populateSuggestions(query, count)
+    {
+        var container = $('#suggestions');
+        var xhr = $.get('http://192.168.2.9:8080/songs/suggest',
+            {'query': query, 'count': count});
+        xhr.done(function(data) {
+            container.empty();
+            data.content.forEach(function(e) {
+                container.append(buildSuggestion(e.title, e.artist, e.code));
+            });
+        });
+    }
+
   	$(function(){
 
-        $('#search').bind('keyup', function(event) {
-            var query = this.value;
 
-            var xhr = $.get('http://192.168.2.9:8080/songs/suggest', {'query': query});
-            xhr.done(function(data) {
-                var sug = $('#suggestions');
-                sug.empty();
-                data.content.forEach(function(e) {
-                    sug.append(buildSuggestion(e.title, e.artist, e.code));
-
-                });
-            });
-
+        $('#search').bind('keyup', function(event)
+        {
+            populateSuggestions(this.value, 10);
         });
 
-        $('#search-form').bind('submit', function(event) {
+        $('#search-form').bind('submit', function(event)
+        {
             event.preventDefault();
-            $(event.target).find('input').blur();
-            $(event.target).find('label').removeClass('active');
-        });
 
+            var target = $(event.target);
+            var input = target.find('input');
+
+            populateSuggestions(input.val(), 50);
+            input.blur();
+            target.find('label').removeClass('active');
+        });
   	});
 })(jQuery);

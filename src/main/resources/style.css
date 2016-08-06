@@ -12,6 +12,10 @@ body, html {
 	font-size: inherit;
 }
 
+#main-image {
+    padding-top: 10px;
+}
+
 @media (max-width: 500px) {
     #main-image {
         width: 100%;

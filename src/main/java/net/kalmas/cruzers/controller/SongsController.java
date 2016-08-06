@@ -22,13 +22,19 @@ class SongsController
     private SongRepo repository;
 
     @RequestMapping(value = "/suggest", method = RequestMethod.GET)
-    public Page<Song> suggest(@RequestParam(required = true) final String query)
-    {
+    public Page<Song> suggest(
+            @RequestParam(required = true) final String query,
+            @RequestParam(required = false, defaultValue = "10") Integer count
+    ) {
+        if (count > 100) {
+            count = 100;
+        }
+
         final BoolQueryBuilder boolQuery = new BoolQueryBuilder();
 
         boolQuery.should(QueryBuilders.matchQuery("title", query.trim()));
         boolQuery.should(QueryBuilders.matchQuery("artist", query.trim()));
-        final Pageable pageable = new PageRequest(0, 10);
+        final Pageable pageable = new PageRequest(0, count);
 
         return this.repository.search(boolQuery, pageable);
     }
