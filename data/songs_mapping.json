@@ -1,0 +1,1 @@
+{"songs2":{"mappings":{"song":{"properties":{"artist":{"type":"string","analyzer":"autocomplete","search_analyzer":"standard"},"code":{"type":"string"},"title":{"type":"string","analyzer":"autocomplete","search_analyzer":"standard"}}}}}}
