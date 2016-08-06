@@ -14,7 +14,7 @@
     function populateSuggestions(query, count)
     {
         var container = $('#suggestions');
-        var xhr = $.get('http://192.168.2.9:8080/songs/suggest',
+        var xhr = $.get('/songs/suggest',
             {'query': query, 'count': count});
         xhr.done(function(data) {
             container.empty();
