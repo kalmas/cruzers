@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { Http, Response, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Song } from './song';
+
+@Injectable()
+export class SongService
+{
+    private suggestUrl = 'http://cruzersforever.com/songs/suggest';
+
+    constructor (private http: Http) {}
+
+    suggestSongs(query:string, count:number): Observable<Song[]>
+    {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('query', query);
+        params.set('count', count.toString());
+        return this.http.get(this.suggestUrl, { search: params })
+                    .map(this.extractData)
+                    .catch(this.handleError);
+    }
+
+    private extractData(res: Response)
+    {
+        let body = res.json();
+        return body.content || {};
+    }
+
+    private handleError (error: any)
+    {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+    }
+}

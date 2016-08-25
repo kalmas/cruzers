@@ -1,9 +1,15 @@
+.DS_Store
+
 /tmp/
 /bin/
 /build/
-
 /.classpath
 /.project
 /.settings/
-.DS_Store
 .gradle
+
+/website/node_modules/
+/website/typings/
+/website/src/*.js
+/website/src/**/*.js
+*.js.map
