@@ -40,13 +40,15 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.14.0"
   },
+  "engines": {
+    "node": "6.4.0"
+  },
   "license": "MIT",
-  "name": "angular2-webpack",
+  "name": "cruzers-website",
   "scripts": {
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "typings install",
-    "start": "webpack-dev-server --open --inline --progress --port 8080",
-    "test": "karma start"
+    "start": "webpack-dev-server --open --inline --progress --port 8080"
   },
   "version": "1.0.0"
 }
