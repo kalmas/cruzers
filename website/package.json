@@ -45,6 +45,10 @@
   },
   "license": "MIT",
   "name": "cruzers-website",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/kalmas/cruzers.git"
+},
   "scripts": {
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "typings install",

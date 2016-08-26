@@ -1,9 +1,25 @@
-main {
-    padding: 1em;
+body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-top: 50px;
-    display: block;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px;
+    overflow: hidden;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3em;
+    width: 100%;
+    z-index: 5;
+
+    text-align: center;
 }
 
 .icon-block {
@@ -16,6 +32,7 @@ main {
 
 #main-image {
     padding-top: 10px;
+    height: 80vh;
 }
 
 @media (max-width: 500px) {
