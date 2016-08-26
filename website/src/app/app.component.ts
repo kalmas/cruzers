@@ -14,6 +14,7 @@ import '../../public/css/styles.css';
 })
 export class AppComponent
 {
+    public query: string = '';
     private queryStream: Subject<string> = new Subject<string>();
     private songService: SongService;
     private songs: Observable<Song[]>;

@@ -1,5 +1,4 @@
 .DS_Store
-/npm-debug.log
 
 /tmp/
 /bin/
@@ -13,4 +12,5 @@
 /website/typings/
 /website/src/*.js
 /website/src/**/*.js
+/website/dist/
 *.js.map
