@@ -3,6 +3,7 @@ import { SongService } from './song.service';
 import { Song } from './song';
 import { Observable }       from 'rxjs/Observable';
 import { Subject }          from 'rxjs/Subject';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import '../../public/css/styles.css';
 
@@ -10,7 +11,8 @@ import '../../public/css/styles.css';
     selector: 'my-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [ SongService ]
+    providers: [ SongService ],
+    directives: [ ROUTER_DIRECTIVES ]
 })
 export class AppComponent
 {

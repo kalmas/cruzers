@@ -18,8 +18,9 @@ footer {
     height: 3em;
     width: 100%;
     z-index: 5;
-
     text-align: center;
+    padding: 0px;
+    margin: 0px;
 }
 
 .icon-block {
@@ -28,11 +29,6 @@ footer {
 
 .icon-block .material-icons {
     font-size: inherit;
-}
-
-#main-image {
-    padding-top: 10px;
-    height: 80vh;
 }
 
 @media (max-width: 500px) {
