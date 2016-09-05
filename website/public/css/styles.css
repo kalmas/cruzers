@@ -1,5 +1,12 @@
 body {
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: #f3e5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
 }
