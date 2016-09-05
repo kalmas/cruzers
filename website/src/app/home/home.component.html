@@ -5,8 +5,15 @@
                 <div class="input-field">
                     <input #query (keyup)="search(query.value)" id="search" type="search" autocomplete="off" placeholder="Search songs">
                     <label for="search"><i class="material-icons">search</i></label>
+                    <div [class.active]="spinnerOn" class="preloader-wrapper small" id="spins">
+                        <div class="spinner-layer">
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
                     <ul id="suggestions" class="collection dropdown-content">
-                        <li *ngFor="let song of songs | async" class="collection-item suggestion">
+                        <li *ngFor="let song of songs" class="collection-item suggestion">
                             <span class="title">{{ song.title }}</span>
                             <p>{{ song.artist }}</p>
                             <p>{{ song.code }}</p>

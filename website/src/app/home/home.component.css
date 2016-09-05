@@ -8,6 +8,14 @@ main {
     flex: 1 0 auto;
 }
 
+#spins {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 footer {
     text-align: center;
 }
