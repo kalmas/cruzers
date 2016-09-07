@@ -1,0 +1,25 @@
+<header>
+    <nav>
+        <div class="nav-wrapper purple lighten-1">
+        <a [routerLink]="['/']" class="brand-logo right">Cruzers Forever</a>
+            <ul id="nav-mobile" class="left">
+                <li>
+                    <a [routerLink]="['/']">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </a>
+                </li>
+                <li class="active"><a [routerLink]="['/about']">About</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+<main *ngIf="song">
+    <h2>{{ song.title }}</h2>
+    <div>{{ song.artist }}</div>
+    <div>{{ song.code }}</div>
+</main>

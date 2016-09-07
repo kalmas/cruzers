@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { SongComponent } from './song/song.component';
 import { APP_ROUTER_PROVIDERS } from './app.routes';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { APP_ROUTER_PROVIDERS } from './app.routes';
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent
+        HomeComponent,
+        SongComponent
     ],
     providers: [ APP_ROUTER_PROVIDERS ],
     bootstrap: [ AppComponent ]
