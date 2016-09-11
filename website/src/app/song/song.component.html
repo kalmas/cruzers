@@ -15,21 +15,29 @@
 </header>
 
 
-
-
-
-<main *ngIf="song">
-    <h2>{{ song.title }}</h2>
-    <div>{{ song.artist }}</div>
-    <div>{{ song.code }}</div>
-
-
-
-
+<main>
+    <div id="content" class="section no-pad-bot">
+        <div *ngIf="song" class="container">
+            <div class="xxl">{{ song.title }}</div>
+            <div class="xl">{{ song.artist }}</div>
+            <div class="l mb20">{{ song.code }}</div>
+            <div *ngIf="videoUrl">
+                <iframe  id="ytplayer" type="text/html"
+                    [src]="videoUrl" frameborder="0"></iframe>
+            </div>
+            <div *ngIf="!videoUrl">
+                <div class="b">Let's see if we can find a video for that...</div>
+                <div *ngIf="videoError">
+                    Sorry, couldn't find a video. Just sing it from memory.
+                </div>
+                <div *ngIf="!videoError" class="preloader-wrapper small active" id="spins">
+                    <div class="spinner-layer">
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
-
-<div *ngIf="videoUrl">
-
-    <iframe  id="ytplayer" type="text/html" width="640" height="390"
-        [src]="videoUrl" frameborder="0"></iframe>
-</div>

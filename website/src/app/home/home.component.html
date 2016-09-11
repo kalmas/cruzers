@@ -3,7 +3,7 @@
         <div class="nav-wrapper purple lighten-1">
             <form (submit)="onSubmit($event)" id="search-form">
                 <div class="input-field">
-                    <input #query (keyup)="search(query.value)" id="search" type="search" autocomplete="off" placeholder="Search songs" [value]="lastQuery" >
+                    <input #query (keyup)="search(query.value)" id="search" type="search" autocomplete="off" placeholder="Search for a song..." [value]="lastQuery" >
                     <label for="search"><i class="material-icons">search</i></label>
                     <div [class.active]="spinnerOn" class="preloader-wrapper small" id="spins">
                         <div class="spinner-layer">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, ActivatedRoute } from '@angular/router';
+import { RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { SongService } from '../song.service';
@@ -17,12 +17,14 @@ export class SongComponent implements OnInit
     public id: string;
     public song: Song;
     public video: any;
+    public videoError: boolean;
     public videoUrl: SafeResourceUrl;
 
     private sub: Subscription;
 
-    constructor(private route: ActivatedRoute, private songService: SongService,
-            private videoService: VideoService, private sanitizer: DomSanitizer) {}
+    constructor(private route: ActivatedRoute, private router: Router,
+            private songService: SongService, private videoService: VideoService,
+            private sanitizer: DomSanitizer) {}
 
     ngOnInit()
     {
@@ -33,13 +35,22 @@ export class SongComponent implements OnInit
 
                 let q: string = `${this.song.title} ${this.song.artist} karaoke`;
                 return this.videoService.searchVideos(q, 1);
-            }).subscribe(
+            })
+            .subscribe(
                 (videos: any[]) => {
                     this.video = videos[0];
-                    let url = `https://www.youtube.com/embed/${this.video.id.videoId}?origin=http://example.com`;
-                    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-                }
-            );
+
+                    if (this.video == null) {
+                        this.videoError = true;
+                    } else {
+                        this.videoError = false;
+                        let url = `https://www.youtube.com/embed/${this.video.id.videoId}?origin=http://cruzersforever.com`;
+                        this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+                    }
+
+                },
+                (err) => this.router.navigateByUrl('/')
+            )
     }
 
     ngOnDestroy()

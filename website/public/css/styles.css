@@ -10,3 +10,23 @@ body {
 .icon-block .material-icons {
     font-size: inherit;
 }
+
+.xxl {
+    font-size: xx-large;
+}
+
+.xl {
+    font-size: x-large;
+}
+
+.l {
+    font-size: x-large;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}

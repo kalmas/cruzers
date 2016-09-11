@@ -20,6 +20,7 @@ export class VideoService
         params.set('maxResults', count.toString());
         params.set('q', query);
         params.set('type', 'video');
+        params.set('videoEmbeddable', 'true');
         params.set('key', this.key);
 
         return this.http.get(this.url, { search: params })
