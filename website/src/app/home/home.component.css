@@ -26,16 +26,18 @@ footer {
      width: 100%;
 }
 
-#main-image {
-    padding-top: 10px;
-    height: 80vh;
-}
-
-@media (max-width: 500px) {
+@media (max-width: 450px) {
     #main-image {
         width: 100%;
     }
 }
+
+@media (min-width: 451px) {
+    #main-image {
+        width: 405px;
+    }
+}
+
 
 #suggestions {
     margin-top: -20px;

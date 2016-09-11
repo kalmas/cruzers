@@ -9,6 +9,7 @@ import { Song } from './song';
 export class SongService
 {
     private suggestUrl = 'http://cruzersforever.com/songs/suggest';
+    // 'http://cruzersforever.com/songs/suggest';
     private cache: Song[] = new Array<Song>();
 
     constructor (private http: Http, private storageService: StorageService) {}
