@@ -22,9 +22,8 @@ export class HomeComponent implements OnInit
     {
         this.songService = songService;
         this.queryStream
-            .debounceTime(500)
             .distinctUntilChanged()
-            .filter((query => query != ""))
+            .debounceTime(500)
             .switchMap((query: string) => {
                 this.spinnerOn = true;
                 this.lastQuery = query;
