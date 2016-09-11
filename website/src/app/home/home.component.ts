@@ -22,8 +22,9 @@ export class HomeComponent implements OnInit
     {
         this.songService = songService;
         this.queryStream
-            .debounceTime(50)
+            .debounceTime(500)
             .distinctUntilChanged()
+            .filter((query => query != ""))
             .switchMap((query: string) => {
                 this.spinnerOn = true;
                 this.lastQuery = query;
@@ -33,7 +34,6 @@ export class HomeComponent implements OnInit
                 this.songs = songs;
                 this.spinnerOn = false;
             });
-
     }
 
     ngOnInit()
