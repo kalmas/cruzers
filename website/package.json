@@ -52,7 +52,7 @@
   "scripts": {
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "typings install",
-    "start": "webpack-dev-server --open --inline --progress --port 8080"
+    "start": "webpack-dev-server --open --inline --progress --port 8081"
   },
   "version": "1.0.0"
 }

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.google.common.net.HttpHeaders;
 
 @Component
-public class CorsFilter implements Filter
+public class HttpHeadersFilter implements Filter
 {
     @Override
     public void destroy() {}
@@ -27,6 +27,7 @@ public class CorsFilter implements Filter
         final HttpServletResponse response = (HttpServletResponse) res;
 
         response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "max-age=3600");
 
         chain.doFilter(req, res);
     }
