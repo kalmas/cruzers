@@ -1,0 +1,32 @@
+body {
+    background-color: #f3e5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+.xxl {
+    font-size: xx-large;
+}
+
+.xl {
+    font-size: x-large;
+}
+
+.l {
+    font-size: x-large;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}

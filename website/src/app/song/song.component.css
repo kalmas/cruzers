@@ -1,0 +1,26 @@
+#title {
+    font-size: xx-large;
+}
+
+#artist {
+    font-size: x-large;
+}
+
+#code {
+    font-size: x-large;
+}
+
+main {
+    text-align: center;
+}
+
+#ytplayer {
+    width: 640px;
+    height: 390px;
+}
+
+@media (max-width: 720px) {
+    #ytplayer {
+        width: 100%;
+    }
+}

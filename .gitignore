@@ -1,0 +1,16 @@
+.DS_Store
+
+/tmp/
+/bin/
+/build/
+/.classpath
+/.project
+/.settings/
+.gradle
+
+/website/node_modules/
+/website/typings/
+/website/src/*.js
+/website/src/**/*.js
+/website/dist/
+*.js.map
