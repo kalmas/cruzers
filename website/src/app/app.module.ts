@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { SongComponent } from './song/song.component';
-import { APP_ROUTER_PROVIDERS } from './app.routes';
+import { RouterModule } from '@angular/router';
+import { routing } from './app.routes';
 
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        routing
     ],
     declarations: [
         AppComponent,
@@ -18,7 +20,7 @@ import { APP_ROUTER_PROVIDERS } from './app.routes';
         HomeComponent,
         SongComponent
     ],
-    providers: [ APP_ROUTER_PROVIDERS ],
+    providers: [],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}

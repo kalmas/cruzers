@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { SongService } from '../song.service';
 import { StorageService } from '../storage.service';
 import { Song } from '../song';
@@ -9,8 +8,7 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [ SongService, StorageService ],
-  directives: [ ROUTER_DIRECTIVES ]
+  providers: [ SongService, StorageService ]
 })
 export class HomeComponent implements OnInit
 {

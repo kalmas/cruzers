@@ -22,4 +22,14 @@
     <h2>{{ song.title }}</h2>
     <div>{{ song.artist }}</div>
     <div>{{ song.code }}</div>
+
+
+
+
 </main>
+
+<div *ngIf="videoUrl">
+
+    <iframe  id="ytplayer" type="text/html" width="640" height="390"
+        [src]="videoUrl" frameborder="0"></iframe>
+</div>
