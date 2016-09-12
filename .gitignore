@@ -9,8 +9,6 @@
 /build/
 .gradle
 
-/src/main/resources/static/
-
 /website/node_modules/
 /website/typings/
 /website/src/*.js
