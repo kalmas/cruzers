@@ -1,14 +1,18 @@
 <header>
     <nav>
         <div class="nav-wrapper purple lighten-1">
-        <a [routerLink]="['/']" class="brand-logo right">Cruzers Forever</a>
+        <a [routerLink]="['/']" id="brand" class="brand-logo right">Cruzers Forever</a>
             <ul id="nav-mobile" class="left">
                 <li>
                     <a [routerLink]="['/']">
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
                 </li>
-                <li class="active"><a [routerLink]="['/about']">About</a></li>
+                <li>
+                    <a [routerLink]="['/about']">
+                        <i class="material-icons">info</i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

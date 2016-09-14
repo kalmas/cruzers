@@ -1,10 +1,18 @@
 <header>
     <nav>
         <div class="nav-wrapper purple lighten-1">
-        <a [routerLink]="['/']" class="brand-logo right">Cruzers Forever</a>
+        <a [routerLink]="['/']" id="brand" class="brand-logo right">Cruzers Forever</a>
             <ul id="nav-mobile" class="left">
-                <li><a [routerLink]="['/']">Home</a></li>
-                <li class="active"><a [routerLink]="['/about']">About</a></li>
+                <li>
+                    <a [routerLink]="['/']">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </a>
+                </li>
+                <li class="active">
+                    <a [routerLink]="['/about']">
+                        <i class="material-icons">info</i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -15,7 +23,7 @@
         <div class="container">
             <div class="title">What is this?</div>
             <p>This is a useless website.</p>
-            <p>It's allows you to search through the karaoke song book from Cruzers Seamans Club. Cruzers was a dive bar, it used to be <a href="https://www.google.com/maps/place/601+Orapax+St,+Norfolk,+VA+23507/@36.865136,-76.3120065">here</a>, but it's gone now.</p>
+            <p>It allows you to search through the karaoke song book from Cruzers Seamans Club. Cruzers was a dive bar, it used to be <a href="https://www.google.com/maps/place/601+Orapax+St,+Norfolk,+VA+23507/@36.865136,-76.3120065">here</a>, but it's gone now.</p>
             <p>Song data was scraped from <a href="https://github.com/kalmas/cruzers/tree/master/songbook/scans">these scans</a>, made several years ago. I cleaned up the data a little, but its still pretty rough.</p>
             <p>Dedicated to the memory of the best bar in Norfolk. The building is a new bar now, but to some it will be Cruzers Forever.</p>
             <p>Website is by Kyle (<a href="http://kalmas.net/">kalmas.net</a>). Source is available at <a href="https://github.com/kalmas/cruzers">https://github.com/kalmas/cruzers</a></p>

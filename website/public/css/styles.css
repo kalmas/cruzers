@@ -30,3 +30,9 @@ body {
 .mb20 {
     margin-bottom: 20px;
 }
+
+@media (max-width: 320px) {
+    #brand {
+        font-size: 1.8rem;
+    }
+}
