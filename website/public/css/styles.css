@@ -36,3 +36,17 @@ body {
         font-size: 1.8rem;
     }
 }
+
+.loading {
+    text-align: center;
+    margin-top: 30vh;
+}
+
+.loading-text {
+    font-size: large;
+    color: #ab47bc;
+}
+
+.spinner-layer {
+    border-color: #ab47bc !important;
+}

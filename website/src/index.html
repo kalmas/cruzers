@@ -8,6 +8,18 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <my-app>Loading...</my-app>
+        <my-app>
+            <div class="container loading ">
+
+                <div *ngIf="!videoError" class="preloader-wrapper small active" id="spins">
+                    <div class="spinner-layer">
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loading-text">Ready to be the Best Singer?</div>
+            </div>
+        </my-app>
     </body>
 </html>
