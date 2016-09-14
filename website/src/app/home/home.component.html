@@ -4,7 +4,10 @@
             <form (submit)="onSubmit($event)" id="search-form">
                 <div class="input-field">
                     <input #query (keyup)="search(query.value)" id="search" type="search" autocomplete="off" placeholder="Search for a song..." [value]="lastQuery" >
-                    <label for="search"><i class="material-icons">search</i></label>
+                    <label for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <i *ngIf="!spinnerOn" (click)="songs = []; query.value = ''" class="material-icons big-z">close</i>
                     <div [class.active]="spinnerOn" class="preloader-wrapper small" id="spins">
                         <div class="spinner-layer">
                             <div class="circle-clipper right">
@@ -14,9 +17,9 @@
                     </div>
                     <ul id="suggestions" class="collection dropdown-content">
                         <a *ngFor="let song of songs" [routerLink]="['/songs', song.id]"  class="collection-item suggestion">
-                            <span class="title">{{ song.title }}</span>
-                            <p>{{ song.artist }}</p>
-                            <p>{{ song.code }}</p>
+                            <div class="sugg-title">{{ song.title }}</div>
+                            <div class="sugg-detail">{{ song.artist }}</div>
+                            <div class="sugg-detail">{{ song.code }}</div>
                         </a>
                     </ul>
                 </div>

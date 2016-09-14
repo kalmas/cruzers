@@ -50,16 +50,16 @@ footer {
     cursor: default;
 }
 
-.suggestion > .title {
+.sugg-title {
     font-size: x-large;
     color: #757575;
-    padding-bottom: 0px;
+    padding-bottom: 3px;
 }
 
-.suggestion > p {
+.sugg-detail {
     color: #757575;
     margin: 0px;
-    padding: 0px 16px;
+    padding: 0px;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -75,5 +75,9 @@ footer {
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #f3e5f5;
+}
+
+.big-z {
+    z-index: 100;
 }
 
