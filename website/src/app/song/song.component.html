@@ -25,12 +25,14 @@
             <div class="xxl">{{ song.title }}</div>
             <div class="xl">{{ song.artist }}</div>
             <div class="l mb20">{{ song.code }}</div>
+
+            <div class="b">{{ videoMsg }}</div>
             <div *ngIf="videoUrl">
                 <iframe  id="ytplayer" type="text/html"
                     [src]="videoUrl" frameborder="0"></iframe>
             </div>
-            <div *ngIf="!videoUrl">
-                <div class="b">Let's see if we can find a video for that...</div>
+
+            <div *ngIf="!videoUrl" class="mt20">
                 <div *ngIf="videoError">
                     Sorry, couldn't find a video. Just sing it from memory.
                 </div>

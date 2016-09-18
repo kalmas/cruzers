@@ -19,6 +19,12 @@ export class SongComponent implements OnInit
     public video: any;
     public videoError: boolean;
     public videoUrl: SafeResourceUrl;
+    public videoMsg: string;
+    public msgs: string[] = [
+        'Let\'s find a video for that...',
+        'Karaoke Video Roulette™️',
+        'Here comes... something...'
+    ];
 
     private sub: Subscription;
 
@@ -28,6 +34,8 @@ export class SongComponent implements OnInit
 
     ngOnInit()
     {
+        this.videoMsg = this.msgs[Math.floor(Math.random() * this.msgs.length)];
+
         // Subscribe to route params
         this.sub = this.route.params.switchMap(
             (params: Object) => {
