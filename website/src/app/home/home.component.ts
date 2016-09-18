@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from '../song.service';
-import { StorageService } from '../storage.service';
+import { IStorageService } from '../storage.service';
+import { MemoryStorageService } from '../memoryStorage.service';
+import { LocalStorageService } from '../localStorage.service';
 import { Song } from '../song';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -8,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [ SongService, StorageService ]
+  providers: [ SongService, MemoryStorageService, LocalStorageService ]
 })
 export class HomeComponent implements OnInit
 {
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit
 
     private queryStream: Subject<string> = new Subject<string>();
 
-    constructor (private songService: SongService, private storageService: StorageService)
+    constructor (private songService: SongService, private storageService: MemoryStorageService)
     {
         this.songService = songService;
         this.queryStream

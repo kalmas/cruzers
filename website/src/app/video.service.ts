@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {Observable as O} from "rxjs/Rx";
-import { StorageService } from './storage.service';
 import { Song } from './song';
 
 @Injectable()

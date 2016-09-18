@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {Observable as O} from "rxjs/Rx";
-import { StorageService } from './storage.service';
+import { MemoryStorageService } from './memoryStorage.service';
+import { LocalStorageService } from './localStorage.service';
 import { Song } from './song';
 
 @Injectable()
@@ -12,7 +12,8 @@ export class SongService
     // 'http://cruzersforever.com/songs/suggest';
     private cache: Song[] = new Array<Song>();
 
-    constructor (private http: Http, private storageService: StorageService) {}
+    constructor (private http: Http, private memoryStorage: MemoryStorageService,
+            private localStorage: LocalStorageService) {}
 
     suggestSongs(query:string, count:number): Observable<Song[]>
     {
@@ -26,7 +27,36 @@ export class SongService
 
     getById(id: string): Song
     {
-        let songs: Song[] = this.storageService.get('songs');
+        // Check local storage first
+        let s: Song = this.getFromLocal(id);
+        if (s != null) {
+            return s;
+        }
+
+        // Search songs in memory
+        s = this.getFromRecentSuggestions(id);
+        if (s == null) {
+            return s;
+        }
+
+        this.saveToLocal(id, s);
+
+        return s;
+    }
+
+    private getFromLocal(id: string): Song
+    {
+        return this.localStorage.get(`song.${id}`);
+    }
+
+    private saveToLocal(id: string, song: Song): void
+    {
+        this.localStorage.set(`song.${id}`, song);
+    }
+
+    private getFromRecentSuggestions(id: string): Song
+    {
+        let songs: Song[] = this.memoryStorage.get('songs');
         if (! songs) {
             return null;
         }

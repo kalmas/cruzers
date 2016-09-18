@@ -3,14 +3,15 @@ import { RouterOutlet, ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { SongService } from '../song.service';
-import { StorageService } from '../storage.service';
+import { MemoryStorageService } from '../memoryStorage.service';
+import { LocalStorageService } from '../localStorage.service';
 import { VideoService } from '../video.service';
 import { Song } from '../song';
 
 @Component({
   templateUrl: './song.component.html',
   styleUrls: [ './song.component.css' ],
-  providers: [ SongService, StorageService, VideoService ],
+  providers: [ SongService, MemoryStorageService, LocalStorageService, VideoService ],
 })
 export class SongComponent implements OnInit
 {
