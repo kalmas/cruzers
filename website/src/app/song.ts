@@ -1,7 +1,7 @@
 export class Song
 {
-    artist: String;
-    code: String;
-    id: String;
-    title: String;
+    artist: string;
+    code: string;
+    id: string;
+    title: string;
 }

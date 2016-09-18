@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -20,7 +20,9 @@ import { routing } from './app.routes';
         HomeComponent,
         SongComponent
     ],
-    providers: [],
+    providers: [
+        Title
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, ActivatedRoute, Router } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { SongService } from '../song.service';
 import { MemoryStorageService } from '../memoryStorage.service';
@@ -31,7 +31,7 @@ export class SongComponent implements OnInit
 
     constructor(private route: ActivatedRoute, private router: Router,
             private songService: SongService, private videoService: VideoService,
-            private sanitizer: DomSanitizer) {}
+            private sanitizer: DomSanitizer, private titleService: Title) {}
 
     ngOnInit()
     {
@@ -41,6 +41,8 @@ export class SongComponent implements OnInit
         this.sub = this.route.params.switchMap(
             (params: Object) => {
                 this.song = this.songService.getById(params['id']);
+
+                this.titleService.setTitle( `${this.song.title} - ${this.song.artist} 🎤Cruzers Forever🎤` );
 
                 let q: string = `${this.song.title} ${this.song.artist} karaoke`;
                 return this.videoService.searchVideos(q, 1);
