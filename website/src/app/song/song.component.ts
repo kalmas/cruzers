@@ -49,7 +49,7 @@ export class SongComponent implements OnInit
                     this.titleService
                         .setTitle( `${song.title} - ${song.artist} 🎤Cruzers Forever🎤` );
 
-                    let q: string = `${song.title} ${song.artist} karaoke`;
+                    let q = this.buildVideoQuery(song.title, song.artist);
                     return this.videoService.searchVideos(q, 1);
                 })
             .subscribe(
@@ -71,5 +71,23 @@ export class SongComponent implements OnInit
     ngOnDestroy()
     {
         this.sub.unsubscribe();
+    }
+
+    private buildVideoQuery(title: string, artist: string)
+    {
+        let query: string = `${title} ${artist} karaoke`;
+
+        query = query.toLocaleLowerCase();
+
+        // trim out stringified nulls
+        query = query.replace('null', '');
+
+        // trim out noisey characters
+        query = query.replace(/[-\(\)\d\.]/g, '');
+
+        // trim out excess white space
+        query = query.replace(/\s+/g, ' ');
+
+        return query.trim();
     }
 }

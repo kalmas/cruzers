@@ -15,8 +15,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 
-
-
 //Materialize
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
