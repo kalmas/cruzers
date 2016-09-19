@@ -8,8 +8,8 @@ import { Song } from './song';
 @Injectable()
 export class SongService
 {
-    private suggestUrl = '/songs/suggest';
-    // 'http://cruzersforever.com/songs/suggest';
+    private host =  '';
+    // 'http://cruzersforever.com';
     private cache: Song[] = new Array<Song>();
 
     constructor (private http: Http, private memoryStorage: MemoryStorageService,
@@ -20,29 +20,40 @@ export class SongService
         let params: URLSearchParams = new URLSearchParams();
         params.set('query', query);
         params.set('count', count.toString());
-        return this.http.get(this.suggestUrl, { search: params })
+        return this.http.get( `${this.host}/songs/suggest` , { search: params })
                     .map(this.extractData)
                     .catch(this.handleError);
     }
 
-    getById(id: string): Song
+    private getFromServer(id: string): Observable<Song>
+    {
+        return this.http.get( `${this.host}/songs/${id}`)
+                    .map((res: Response) => { return res.json() })
+                    .catch(this.handleError);
+    }
+
+    getById(id: string): Observable<Song>
     {
         // Check local storage first
         let s: Song = this.getFromLocal(id);
-        if (s != null) {
-            return s;
+        if (s) {
+            return Observable.of(s);
         }
 
-        // Search songs in memory
+        // Search though songs in memory
         s = this.getFromRecentSuggestions(id);
-        if (s == null) {
-            return s;
+
+        let result: Observable<Song>;
+        if (s) {
+            result = Observable.of(s);
+        } else {
+            // If all else fails, fetch from server.
+            result = this.getFromServer(id);
         }
 
-        this.saveToLocal(id, s);
-
-        return s;
+        return result;
     }
+
 
     private getFromLocal(id: string): Song
     {
@@ -69,7 +80,6 @@ export class SongService
         let body = res.json();
         let result = body.content || [];
 
-        this.cache = result;
         return result;
     }
 

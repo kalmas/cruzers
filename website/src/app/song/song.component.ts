@@ -38,17 +38,22 @@ export class SongComponent implements OnInit
         this.videoMsg = this.msgs[Math.floor(Math.random() * this.msgs.length)];
 
         // Subscribe to route params
-        this.sub = this.route.params.switchMap(
-            (params: Object) => {
-                this.song = this.songService.getById(params['id']);
+        this.sub = this.route.params
+            .switchMap(
+                (params) => {
+                    return this.songService.getById(params['id']);
+                })
+            .switchMap(
+                (song) => {
+                    this.song = song;
+                    this.titleService
+                        .setTitle( `${song.title} - ${song.artist} 🎤Cruzers Forever🎤` );
 
-                this.titleService.setTitle( `${this.song.title} - ${this.song.artist} 🎤Cruzers Forever🎤` );
-
-                let q: string = `${this.song.title} ${this.song.artist} karaoke`;
-                return this.videoService.searchVideos(q, 1);
-            })
+                    let q: string = `${song.title} ${song.artist} karaoke`;
+                    return this.videoService.searchVideos(q, 1);
+                })
             .subscribe(
-                (videos: any[]) => {
+                (videos) => {
                     this.video = videos[0];
 
                     if (this.video == null) {
@@ -58,10 +63,9 @@ export class SongComponent implements OnInit
                         let url = `https://www.youtube.com/embed/${this.video.id.videoId}?origin=http://cruzersforever.com`;
                         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
                     }
-
                 },
-                (err) => this.router.navigateByUrl('/')
-            )
+                (err) => { console.log(err); this.router.navigateByUrl('/'); }
+            );
     }
 
     ngOnDestroy()

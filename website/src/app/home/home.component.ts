@@ -29,6 +29,11 @@ export class HomeComponent implements OnInit
             .switchMap((query: string) => {
                 this.spinnerOn = true;
                 this.lastQuery = query;
+
+                if (query == '') {
+                    return Observable.of([])
+                }
+
                 return this.songService.suggestSongs(query, 10);
             })
             .subscribe((songs: Song[]) => {
