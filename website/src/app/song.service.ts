@@ -8,8 +8,8 @@ import { Song } from './song';
 @Injectable()
 export class SongService
 {
-    private host =  '';
-    // 'http://cruzersforever.com';
+    private host =  'http://localhost:8080';
+     // 'http://cruzersforever.com';
     private cache: Song[] = new Array<Song>();
 
     constructor (private http: Http, private memoryStorage: MemoryStorageService,

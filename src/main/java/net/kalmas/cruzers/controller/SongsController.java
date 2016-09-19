@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,8 +27,8 @@ class SongsController
             @RequestParam(required = true) final String query,
             @RequestParam(required = false, defaultValue = "10") Integer count
     ) {
-        if (count > 100) {
-            count = 100;
+        if (count > 30) {
+            count = 30;
         }
 
         final BoolQueryBuilder boolQuery = new BoolQueryBuilder();
@@ -37,5 +38,11 @@ class SongsController
         final Pageable pageable = new PageRequest(0, count);
 
         return this.repository.search(boolQuery, pageable);
+    }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Song getById(@PathVariable final String id) 
+    {
+        return this.repository.findOne(id);
     }
 }
