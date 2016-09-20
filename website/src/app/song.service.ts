@@ -8,8 +8,8 @@ import { Song } from './song';
 @Injectable()
 export class SongService
 {
-    private host =  'http://localhost:8080';
-     // 'http://cruzersforever.com';
+    private host = 'http://cruzersforever.com/api';
+    // 'http://cruzersforever.com';
     private cache: Song[] = new Array<Song>();
 
     constructor (private http: Http, private memoryStorage: MemoryStorageService,
@@ -50,6 +50,10 @@ export class SongService
             // If all else fails, fetch from server.
             result = this.getFromServer(id);
         }
+
+        result.subscribe(
+            (song) => this.saveToLocal(id, song)
+        );
 
         return result;
     }

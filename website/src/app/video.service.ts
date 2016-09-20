@@ -13,6 +13,8 @@ export class VideoService
 
     searchVideos(query:string, count:number): Observable<Object[]>
     {
+        window.console.log( `Query: ${query}` );
+
         let params: URLSearchParams = new URLSearchParams();
         params.set('part', 'snippet');
         params.set('maxResults', count.toString());
