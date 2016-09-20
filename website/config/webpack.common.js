@@ -29,6 +29,10 @@ module.exports = {
                 loader: 'file?name=assets/[name].[hash].[ext]'
             },
             {
+                test: /cruzers_banner\.png$/,
+                loader: 'file?name=assets/[name].[ext]'
+            },
+            {
                 test: /\.css$/,
                 exclude: helpers.root('src', 'app'),
                 loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
