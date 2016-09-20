@@ -14,7 +14,8 @@ import { Subject } from 'rxjs/Subject';
 })
 export class HomeComponent implements OnInit
 {
-    public lastQuery: string = '';
+    public lastQuery: string;
+    public query: string = '';
     public spinnerOn: boolean = false;
     public songs: Song[];
 
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit
             .debounceTime(500)
             .switchMap((query: string) => {
                 this.spinnerOn = true;
-                this.lastQuery = query;
+                this.query = query;
 
                 if (query == '') {
                     return Observable.of([])
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit
 
     ngOnDestroy()
     {
-        this.storageService.set('query', this.lastQuery);
+        this.storageService.set('query', this.query);
         this.storageService.set('songs', this.songs);
     }
 
