@@ -1,8 +1,8 @@
 = Cruzers Forever =
 
-Website for searching an old Karaoke book from a closed bar (Cruzers).
+API and web interface for searching an old Karaoke book from a closed dive bar (Cruzers).
 
-See it in action at http://cruzersforever.com
+See it in action at https://cruzersforever.com
 
 == Directory Structure ==
 
