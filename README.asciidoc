@@ -1,25 +1,30 @@
-# cruzers
+= Cruzers Forever =
+
 Website for searching an old Karaoke book from a closed bar (Cruzers).
 
 See it in action at http://cruzersforever.com
 
-## src/main
+== Directory Structure ==
 
-Java Spring Boot webservice for searching song. Bulid and run with gradle.
+=== src/ ===
 
-```sh
+Spring REST API for searching song database.
+
+[source,sh]
+----
 # Run for development
 ./gradlew bootrun
 
 # Build it
 ./gradlew build
-```
+----
 
-## website
+=== website/ ===
 
-Angular2 website interface. Built and packaged with webpack
+Angular2 website interface. Built and packaged with webpack.
 
-```sh
+[source,sh]
+----
 cd website
 
 # Run for development
@@ -27,4 +32,4 @@ npm start
 
 # Build it
 npm run-script build
-```
+----
